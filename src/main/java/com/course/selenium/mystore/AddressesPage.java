@@ -14,7 +14,7 @@ public class AddressesPage {
 
     public void addAddress() {
 
-        WebElement address = this.driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div[3]/a"));
-        address.click();
+        WebElement addNewAddress = this.driver.findElement(By.cssSelector("#content > div.addresses-footer > a"));
+        addNewAddress.click();
     }
 }
