@@ -100,17 +100,21 @@ public class MyStoreAddressTest {
 
         if (
                 addressText.contains("Main address") &&
-                        addressText.contains("Rafal Michal Czerwik") &&
-                        addressText.contains("Street test 1") &&
+                addressText.contains("Rafal Michal Czerwik") &&
+                addressText.contains("Street test 1") &&
                 addressText.contains("Krakow") &&
-                        addressText.contains("01234") &&
-                        addressText.contains("United Kingdom") &&
-                        addressText.contains("123456789")
+                addressText.contains("01234") &&
+                addressText.contains("United Kingdom") &&
+                addressText.contains("123456789")
         ) {
             System.out.println("Adres jest poprawny.");
         } else {
             System.out.println("Adres jest niepoprawny.");
         }
+    }
+
+    @And("close browser")
+    public void closeBrowser() {
 
         this.driver.quit();
     }

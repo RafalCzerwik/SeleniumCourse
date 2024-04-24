@@ -7,6 +7,7 @@ Feature: MyStore Address
     And adds the first address with <alias> <streetName> <city> <postalCode> <phone>
     Then the address is added to the user's account
     And the user checks if the provided data is correct
+    And close browser
 
     Examples:
       | alias          | streetName            | city      | postalCode   | phone     |
