@@ -1,5 +1,7 @@
 package com.course.selenium.cucumber.steps;
 
+import com.course.selenium.mystore.AddressesPage;
+import com.course.selenium.mystore.DashboardPage;
 import com.course.selenium.mystore.LoginPage;
 import com.course.selenium.mystore.MainPage;
 import io.cucumber.java.en.And;
@@ -18,13 +20,13 @@ import java.time.Duration;
 import static org.junit.Assert.assertEquals;
 
 public class MyStoreAddressManagementTest {
-    WebDriver driver;
+
+    private WebDriver driver;
 
     @Given("a logged-in user with {word} and {word} is on the dashboard")
     public void goToDashboardPage(String email, String password) {
 
         this.driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         this.driver.get("https://mystore-testlab.coderslab.pl");
 
         MainPage mainPage = new MainPage(this.driver);
@@ -32,12 +34,18 @@ public class MyStoreAddressManagementTest {
 
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.logInUser(email, password);
+
+        DashboardPage dashboardPage = new DashboardPage(this.driver);
+        dashboardPage.myAddress();
+
+        AddressesPage addressesPage = new AddressesPage(this.driver);
+        addressesPage.addAddress();
     }
 
     @When("user adding the first address with {string} {string} {string} {string} {string}")
     public void user_adding_the_first_address_with(String alias, String streetName, String city, String postalCode, String phone) {
 
-        WebElement addNewAddress = this.driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div[3]/a"));
+        WebElement addNewAddress = this.driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/a"));
         addNewAddress.click();
 
         WebElement aliasNameInput = this.driver.findElement(By.xpath("//*[@id=\"field-alias\"]"));
@@ -62,14 +70,14 @@ public class MyStoreAddressManagementTest {
 
         WebElement saveAddressButton = this.driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/footer/button"));
         saveAddressButton.click();
-
-        Alert alert = driver.switchTo().alert();
-        alert.dismiss();
     }
 
     @Then("the address is added to the user account")
     public void the_address_is_added_to_the_user_account() {
         String successAlert = "Address successfully added!";
+
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
 
         WebElement successAlertMessage = this.driver.findElement(By.xpath("//*[@id=\"notifications\"]/div/article"));
         assertEquals(successAlert, successAlertMessage.getText());

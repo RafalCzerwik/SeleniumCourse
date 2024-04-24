@@ -26,8 +26,5 @@ public class LoginPage {
 
         WebElement signInButton = this.driver.findElement(By.id("submit-login"));
         signInButton.click();
-
-        WebElement addressesButton = this.driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/a[2]"));
-        addressesButton.click();
     }
 }
