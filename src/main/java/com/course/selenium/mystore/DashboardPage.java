@@ -14,7 +14,7 @@ public class DashboardPage {
 
     public void myAddress() {
 
-        WebElement address = this.driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/a"));
+        WebElement address = this.driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/a[2]"));
         address.click();
     }
 }

@@ -1,7 +1,6 @@
 Feature: MyStore Address
 
   Scenario Outline: User can add address
-
     Given the user is on the main page
     And the user logs in to their account
     When the user navigates from the dashboard page to the addresses page
