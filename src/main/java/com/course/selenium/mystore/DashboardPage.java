@@ -17,4 +17,9 @@ public class DashboardPage {
         WebElement address = this.driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/a[2]"));
         address.click();
     }
+
+    public void goBackToMainPage() {
+        WebElement homePage = this.driver.findElement(By.xpath("/html/body/main/header/div[2]/div/div[1]/div[1]/a"));
+        homePage.click();
+    }
 }
